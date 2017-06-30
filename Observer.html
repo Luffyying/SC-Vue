@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>关于如何监听一个对象的变化</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		//观察者构造函数
+		//创建一个类
+		function Observer(data){
+			this.data = data;
+			this.walk(data);//调用 walk,walk的作用
+		}
+		let p = Observer.prototype;
+		//此函数用于深层次遍历对象的各个属性，采用的是递归的思路,因为我们要对对象的每一个属性绑定getter and setter
+		p.walk = function(obj){
+			let val;
+			for(let key in obj){
+				//hasOwnProperty检测不到原型链上的属性
+				if(obj.hasOwnProperty(key)){
+					val =  obj[key];
+					if(typeof val ==='object'){
+						new Observer(val);//递归
+					}
+					this.convert(key,val);
+				}
+			}
+		}
+		p.convert = function(key,val){
+			Object.defineProperty(this.data,key,{
+				enumerable:true,
+				configurable:true,
+				get:function(){
+					console.log('你访问了'+key);
+					return val
+				},
+				set:function(newVal){
+					console.log('你设置了'+key);
+					console.log('新的'+key+'='+newVal);
+					if(newVal ===val) return;
+					val = newVal
+				}
+			})
+		}
+		let data = {
+			user:{
+				name:'luffy',
+				age:18
+			},
+			address:{
+				city:'beijing'
+			}
+		};
+		let app = new Observer(data);//一个Observer的实例
+		console.log(app);
+		let k = {name:'luffy',age:{name:'sdf'}} ;
+		console.log(k);
+		for(let key in k){
+			console.log(k[key]);
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
