@@ -29,3 +29,10 @@ test:测试用例
 - 3.npm run buildw
 
 打包，生成最终运行文件
+
+
+#### 使用： ####
+clone
+npm i
+npm run dev
+npm run build
