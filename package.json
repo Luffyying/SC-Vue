@@ -1,0 +1,23 @@
+{
+	"name":"vue",
+	"version":"1.0.0",
+	"description":"mvvm similar",
+	"main":"index.js",
+	"scripts":{
+		"build":"rollup -c --watch",
+		"dev":"webpack-dev-server --inline --hot",
+		"buildw":"webpack --config ./webpack.config.js"
+	},
+	"author":"luffyying",
+	"license":"ISC",
+	"devDependencies":{
+		"babel-preset-es2015-rollup": "^3.0.0",
+	    "html-webpack-plugin": "^2.26.0",
+	    "rollup": "^0.41.1",
+	    "rollup-plugin-babel": "^2.7.1",
+	    "rollup-plugin-json": "^2.1.0",
+	    "rollup-watch": "^3.2.2",
+	    "webpack": "^2.2.1",
+	    "webpack-dev-server": "^2.2.1"
+	}
+}
