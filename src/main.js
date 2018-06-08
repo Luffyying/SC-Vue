@@ -14,7 +14,7 @@ export default class vue{
 		// option.data = {test:'ss'}  这是又换了新的地址,所以原来this.$data指向的原来的option.data 还是不变的
 		//这就是为什么 挂载到vue上的属性也监听到了
 		this._proxy(option)
-		observe(option)
+		observe(this.$data)
  	}
 	//添加代理属性  this.name  挂载到vue上的属性也监听到了  疑问？
 	_proxy(ops){
