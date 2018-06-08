@@ -2,6 +2,7 @@
 
 
 import { observe } from './observer/observe.js'
+import compile from './compile/compiler.js'
 export default class vue{
 	constructor(option){
 		// console.log('here is vue sample')
@@ -15,6 +16,9 @@ export default class vue{
 		//这就是为什么 挂载到vue上的属性也监听到了
 		this._proxy(option)
 		observe(this.$data)
+
+		//编译html
+		compile(option,this)
  	}
 	//添加代理属性  this.name  挂载到vue上的属性也监听到了  疑问？
 	_proxy(ops){
