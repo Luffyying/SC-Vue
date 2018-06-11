@@ -4,7 +4,7 @@ let myvue = require("../dist/bundle.js");
 window.vue = new myvue({
 	el:'#root',
 	data:{
-		show:false,
+		show:true,
 		name:'luffy',
 		age:10,
 		hobby:{

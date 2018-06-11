@@ -14,7 +14,6 @@ export default class Directive{
 
 	}
 	_bind(){
-
 		let def =this.dir.def; 
 		Object.assign(this,def)
 		this.bind && this.bind()
