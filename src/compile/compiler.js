@@ -66,7 +66,6 @@ function getDirective(node,option){
 			name:parse,
 			def:option.directives[parse]
 		}
-		// console.log(token)
 	}
 	return token
 	

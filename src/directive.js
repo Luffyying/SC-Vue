@@ -20,11 +20,9 @@ export default class Directive{
 		this.bind && this.bind()
 		if(this.update){
 			this._update = (val,oldVal) =>{
-				// debugger
 				this.update(val,oldVal)
 			}
 		}
-		// debugger
 		//let value = this.vm[this.dir.expression]
 		//this.update(value)
 
