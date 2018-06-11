@@ -20,7 +20,7 @@ export default class vue{
 		//编译html
 		compile(option,this)
  	}
-	//添加代理属性  this.name  挂载到vue上的属性也监听到了  疑问？
+	//添加代理属性  this.name  挂载到vue上的属性也监听到了  
 	_proxy(ops){
 		let that = this;
 		let d = ops.data;
