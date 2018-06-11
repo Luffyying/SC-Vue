@@ -3,6 +3,7 @@
 
 import { observe } from './observer/observe.js'
 import compile from './compile/compiler.js'
+import directives from './directives/index.js'
 export default class vue{
 	constructor(option){
 		// console.log('here is vue sample')
@@ -11,6 +12,18 @@ export default class vue{
 	}
 	init(option){
 		this.$data = option.data
+		let options = Object.assign({},{
+			computed:{},
+			methods:{},
+			data:{},
+			props:{}
+		},
+		option,
+		{
+			directives,
+			components:{}
+		})
+		this.$option = options
 		// option.data['k'] = 0
 		// option.data = {test:'ss'}  这是又换了新的地址,所以原来this.$data指向的原来的option.data 还是不变的
 		//这就是为什么 挂载到vue上的属性也监听到了

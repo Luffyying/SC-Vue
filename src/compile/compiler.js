@@ -1,17 +1,17 @@
+import Directive from '../directive'
 export default function compile(option,v){
 
  	let $el = v.$el = initElement(option)//获得DOM结构
- 	let $fragment = nodeToFragment($el)//将待编译的HTML存放在代码片段中
- 	//最终将编译好的结果插入真实的DOM ,完成编译
+ 	let $fragment = nodeToFragment($el)//将待编译的HTML存放在代码片段中,此时真实的dom内容已经不存在了
+ 	//$fragment 没有挂载变量内容的空壳
  	compiler($fragment,v)
-    
+ 	//最终将编译好的结果插入真实的DOM ,完成编译
  	v.$el.appendChild($fragment)
  	//dom 已经渲染
 
 }
 function compiler(node,v){
 	if(node.hasChildNodes()){
-
 		compilerNodeList(node.childNodes,v)
 	}
 }
@@ -37,6 +37,40 @@ function compileElement(node,vm){
 	//元素节点
 	console.log(node)
 	console.log(vm)
+
+	let attrs = [].slice.call(node.attributes)
+	//获得属性节点
+	if(attrs.length){
+		//获得到带编译的节点，给其添加订阅 
+		//let token = getDirective(node,vm)
+		attrs.forEach((item,index)=>{
+			// console.log(item)
+			let token = getDirective(item,vm.$option)
+			if(token){
+				new Directive(token,vm,node)
+			}
+		})
+
+	}
+
+}
+
+function getDirective(node,option){
+	// node.attributes[0].nodeType 属性节点 2
+	let token = null,attrName =node.name
+	//attrName : v-text、 class
+	if(attrName.indexOf('v-') > -1){
+		let parse = attrName.slice(2)
+		token = {
+			expression:node.value,
+			name:parse,
+			def:option.directives[parse]
+		}
+		// console.log(token)
+	}
+	return token
+	
+
 }
 function compileTextNode(node,vm){
 	//文本节点
