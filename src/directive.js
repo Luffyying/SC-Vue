@@ -20,14 +20,14 @@ export default class Directive{
 		this.bind && this.bind()
 		if(this.update){
 			this._update = (val,oldVal) =>{
+				// debugger
 				this.update(val,oldVal)
 			}
 		}
 		// debugger
-		let value = this.vm[this.dir.expression]
-		this.update(value)
-		// let watcher = new Watcher(this.dir.expression,this.vm,this.dir.def)
+		//let value = this.vm[this.dir.expression]
+		//this.update(value)
 
-		//let watcher = new Watcher(this.expression,this.vm,this._update)
+		let watcher = new Watcher(this.expression,this.vm,this._update)
 	}
 }

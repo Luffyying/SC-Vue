@@ -1,6 +1,5 @@
 export default {
     bind() {
-    	debugger
     	console.log(this)
             this.attr = this.node.nodeType === 3 ? 'data' : 'textContent';
     },
