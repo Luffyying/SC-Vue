@@ -11,7 +11,6 @@ export default class Watcher{
 	}
 
 	update(){
-		// debugger
 		console.log(this)
 		let newValue = this.get();
 		let test = this.callback
@@ -19,6 +18,9 @@ export default class Watcher{
 	}
 
 	get(){
-		return this.scope[this.exp]
+		//暂时仅仅解决简单的表达式
+		let exp = 'scope.'+this.exp
+		let a = new Function('scope','return '+exp)
+		return a(this.scope)
 	}
 }

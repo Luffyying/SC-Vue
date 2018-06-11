@@ -25,10 +25,8 @@ class Observe{
 	defineProps(obj,key,val){
 		let dep = new Dep();
 		//监听孩子
-		// defineProps(obj, key, obj[key]);
 		Object.defineProperty(obj,key,{
 			get(){
-				// dep
 				if(Dep.target){
 					//均为订阅者
 					dep.addSub(Dep.target)
