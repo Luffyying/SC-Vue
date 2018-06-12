@@ -23,6 +23,9 @@ class Observe{
 	    })
 	}
 	defineProps(obj,key,val){
+		if(typeof val =='object'){
+			observe(val)
+		}
 		let dep = new Dep();
 		//监听孩子
 		Object.defineProperty(obj,key,{
@@ -35,6 +38,8 @@ class Observe{
 				return val
 			},
 			set(newVal){
+				//解决只能监听一层的bug
+
 				if(val != newVal){
 					val = newVal
 				}
