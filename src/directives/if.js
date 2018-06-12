@@ -2,10 +2,7 @@ export default{
 	bind(){
 		let node = this.node
 	    let scope = this.vm
-
         let refNode =  this.refNode = document.createTextNode('');
-        // debugger
-        // console.log(node.parentNode)
         node.parentNode.insertBefore(refNode, node);
         node.parentNode.removeChild(node);
 	},
@@ -34,4 +31,3 @@ export default{
 		}
 	}
 }
-//首先移除 然后根据布尔值 添加还是删除

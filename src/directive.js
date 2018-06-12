@@ -22,8 +22,7 @@ export default class Directive{
 				this.update(val,oldVal)
 			}
 		}
-		//let value = this.vm[this.dir.expression]
-		//this.update(value)
+
 		let watcher = new Watcher(this.expression,this.vm,this._update,this.bind)
 	}
 }

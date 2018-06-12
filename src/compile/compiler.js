@@ -46,10 +46,8 @@ function compileElement(node,vm){
 		//获得到带编译的节点，给其添加订阅 
 		//let token = getDirective(node,vm)
 		attrs.forEach((item,index)=>{
-			// console.log(item)
 			let token = getDirective(item,vm.$option)
 			if(token){
-				// debugger
 				new Directive(token,vm,node)
 			}
 		})
