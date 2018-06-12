@@ -18,18 +18,20 @@ function compiler(node,v){
 //分析节点
 function compilerNodeList(nodeList,v){
 	let el;
-	for(let i=0,len = nodeList.length;i<len;i++){
+	for(let i=0;i<nodeList.length;i++){
 		el = nodeList[i]
 		//分析节点类型
-		switch (el.nodeType){
-			case 1:
-				compileElement(el,v)
-				break;
-			case 3:
-				compileTextNode(el,v)
-				break;
-			default:
-				break;
+		if(el){
+			switch (el.nodeType){
+				case 1:
+					compileElement(el,v)
+					break;
+				case 3:
+					compileTextNode(el,v)
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }
@@ -47,6 +49,7 @@ function compileElement(node,vm){
 			// console.log(item)
 			let token = getDirective(item,vm.$option)
 			if(token){
+				// debugger
 				new Directive(token,vm,node)
 			}
 		})
