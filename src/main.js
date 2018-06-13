@@ -24,6 +24,7 @@ export default class vue{
 			components:{}
 		})
 		this.$option = options
+		this.$compiler = compile
 		// option.data['k'] = 0
 		// option.data = {test:'ss'}  这是又换了新的地址,所以原来this.$data指向的原来的option.data 还是不变的
 		//这就是为什么 挂载到vue上的属性也监听到了
@@ -32,7 +33,7 @@ export default class vue{
 		observe(this.$data)
 
 		//编译html
-		compile(option,this)
+		new compile(options,this)
  	}
  	//添加代理方法 this.show()
  	_proxyMethods(methods){

@@ -18,8 +18,18 @@ export default class Watcher{
 	}
 
 	get(){
-		//暂时仅仅解决简单的表达式
+		// 仅仅是简单表达式的情况
 		let exp = 'scope.'+this.exp
+		// let reg = /\(([^*]+)\)/g
+		// if (reg.test(this.exp)) {
+		// 	//暂且当做v-for解析
+		// 	return this.exp
+		// }else{
+		// 	let a = new Function('scope','return '+exp)
+		// 	return a(this.scope)
+		// }
+		
+		//console.log(this.exp) //'item in books'
 		let a = new Function('scope','return '+exp)
 		return a(this.scope)
 	}

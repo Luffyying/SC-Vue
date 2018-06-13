@@ -13,6 +13,7 @@ window.vue = new myvue({
 				key:89
 			}
 		},
+		books:[{name:'js权威指南'},{name:'node.js实战'}],
 		array:[1,2,3,4],
 		array2:[[1,2],[3,4]],
 		complexArray:[{name:'lala',age:8},{name:'kankan',age:9}]
