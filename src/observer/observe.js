@@ -23,6 +23,7 @@ class Observe{
 	    })
 	}
 	defineProps(obj,key,val){
+		//解决只能监听一层的bug
 		if(typeof val =='object'){
 			observe(val)
 		}
@@ -38,7 +39,6 @@ class Observe{
 				return val
 			},
 			set(newVal){
-				//解决只能监听一层的bug
 
 				if(val != newVal){
 					val = newVal

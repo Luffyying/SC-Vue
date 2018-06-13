@@ -5,7 +5,6 @@ export default {
     },
 
     update(value) {
-    	debugger
         this.node[this.attr] = value;
     }
 }

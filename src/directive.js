@@ -10,6 +10,8 @@ export default class Directive{
 		this.node = node;
 		this.expression = dir.expression
 		this.name = dir.name
+      
+		this.prop = dir.prop
 		this._bind();
 
 	}

@@ -59,14 +59,18 @@ function compileElement(node,vm){
 function getDirective(node,option){
 	// node.attributes[0].nodeType 属性节点 2
 	let token = null,attrName =node.name
-	//attrName : v-text、 class
+	//attrName : v-text、 class   
 	if(attrName.indexOf('v-') > -1){
-		let parse = attrName.slice(2)
+		//v-on:click
+		let parse = attrName.slice(2).split(":")
 		token = {
 			expression:node.value,
-			name:parse,
-			def:option.directives[parse]
+			name:parse[0],
+			prop:parse[1],
+			def:option.directives[parse[0]]
 		}
+		console.log(token)
+
 	}
 	return token
 	

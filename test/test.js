@@ -17,7 +17,20 @@ window.vue = new myvue({
 		array2:[[1,2],[3,4]],
 		complexArray:[{name:'lala',age:8},{name:'kankan',age:9}]
 	},
+	computed:{
+		cpt:{
+			get(){
+				return 8
+			},
+			set(val){
+
+			}
+		}
+	},
 	methods:{
+		clickFun:function(){
+			alert('i am here')
+		},
 		show:function(){
 			alert('this is a method')
 		}

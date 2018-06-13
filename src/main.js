@@ -28,10 +28,17 @@ export default class vue{
 		// option.data = {test:'ss'}  这是又换了新的地址,所以原来this.$data指向的原来的option.data 还是不变的
 		//这就是为什么 挂载到vue上的属性也监听到了
 		this._proxy(option)
+		this._proxyMethods(option.methods)
 		observe(this.$data)
 
 		//编译html
 		compile(option,this)
+ 	}
+ 	//添加代理方法 this.show()
+ 	_proxyMethods(methods){
+ 		Object.keys(methods).forEach(method=>{
+ 			this[method] = this.$option.methods[method]
+ 		})
  	}
 	//添加代理属性  this.name  挂载到vue上的属性也监听到了  
 	_proxy(ops){
