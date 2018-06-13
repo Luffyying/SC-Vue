@@ -34,7 +34,7 @@ export default{
 		range.deleteContents()
 		
 
-		// debugger
+		// bugger
 		//循环问题
 		//this.parentNode.insertBefore(clone2,this.endNode)
 

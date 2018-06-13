@@ -4,6 +4,7 @@ let myvue = require("../dist/bundle.js");
 window.vue = new myvue({
 	el:'#root',
 	data:{
+		sh:90,
 		show:true,
 		name:'luffy',
 		age:10,
@@ -26,6 +27,11 @@ window.vue = new myvue({
 			set(val){
 
 			}
+		}
+	},
+	watch:{
+		sh:function(newVal){
+			this.name = newVal + 'watching'
 		}
 	},
 	methods:{

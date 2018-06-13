@@ -1,20 +1,26 @@
 import Dep from './dep'
-
+import Batcher from './batcher'
+const batcher = Batcher();
+let id = 0;
 export default class Watcher{
 	constructor(exp,scope,callback){
+		this.value = null;
 		this.exp = exp;
 		this.scope = scope,
 		this.callback = callback
+		this.id = id++
 		Dep.target = this;
 		this.update()
 		Dep.target = null;
 	}
 
 	update(){
-		console.log(this)
-		let newValue = this.get();
-		let test = this.callback
-		test(newValue)
+		let newValue = this.get()
+		this.value = newValue
+		batcher.pushWatcher(this);
+		// let newValue = this.get();
+		// let test = this.callback
+		// test(newValue)
 	}
 
 	get(){

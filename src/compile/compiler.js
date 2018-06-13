@@ -1,7 +1,6 @@
 import Directive from '../directive'
 export default class Compiler{
 	constructor(option,v){
-		debugger
 		let $el = v.$el = initElement(option)//获得DOM结构
 	 	let $fragment = nodeToFragment($el)//将待编译的HTML存放在代码片段中,此时真实的dom内容已经不存在了
 	 	//$fragment 没有挂载变量内容的空壳

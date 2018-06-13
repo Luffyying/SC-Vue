@@ -4,6 +4,8 @@
 import { observe } from './observer/observe.js'
 import compile from './compile/compiler.js'
 import directives from './directives/index.js'
+
+import dataAPI from './instance/api/data'
 export default class vue{
 	constructor(option){
 		// console.log('here is vue sample')
@@ -30,6 +32,9 @@ export default class vue{
 		//这就是为什么 挂载到vue上的属性也监听到了
 		this._proxy(option)
 		this._proxyMethods(option.methods)
+
+		//添加watch功能
+		this.initWatch();
 		observe(this.$data)
 
 		//编译html
@@ -60,5 +65,19 @@ export default class vue{
                 }
 			})
 		}
+	}
+
+	initWatch(){
+		registerCallbacks(this,'$watch',this.$option.watch)
+	}
+}
+dataAPI(vue);
+function registerCallbacks(scope,action,hash){
+	if(!hash){
+		return 
+	}
+	let key;
+	for(let key in hash){
+		scope[action](key,hash[key].bind(scope))
 	}
 }
