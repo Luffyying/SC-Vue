@@ -21,18 +21,11 @@ class Batcher{
 	        this.has[watch.id] = watch;
 	        if (!this.waiting) {
 	            this.waiting = true;
-	            // setTimeout(() => {
-	            //     // isFlushing, 此字段用来处理多重异步队列的问题
-	            //     this.isFlushing = true;
-	            //     this.flush();
-	            //     this.isFlushing = false;
-	            // });
 	            nextTick(this.flush,this);
 	        }
 	    }
 	}
 	flush() {
-		debugger
 		let queue = this.queue;
 		let watcher;
 		for(let i=0;i<queue.length;i++){

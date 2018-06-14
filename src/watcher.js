@@ -3,6 +3,7 @@ import Batcher from './batcher'
 const batcher = Batcher();
 let id = 0;
 export default class Watcher{
+	//watch 监听的对象改变时的回调 callback
 	constructor(exp,scope,callback){
 		this.value = null;
 		this.exp = exp;
@@ -18,9 +19,6 @@ export default class Watcher{
 		let newValue = this.get()
 		this.value = newValue
 		batcher.pushWatcher(this);
-		// let newValue = this.get();
-		// let test = this.callback
-		// test(newValue)
 	}
 
 	get(){

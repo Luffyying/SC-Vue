@@ -6,9 +6,6 @@ import Dep from '../dep'
 class Observe{
 	constructor(value){
 		this.value = value;
-		// this.dep = new Dep()
-		// let obj = value
-
 	 	this.walk(value)
 
 	}
@@ -27,11 +24,11 @@ class Observe{
 		if(typeof val =='object'){
 			observe(val)
 		}
+		//每一个变量拥有一个dep
 		let dep = new Dep();
 		//监听孩子
 		Object.defineProperty(obj,key,{
 			get(){
-				debugger
 				if(Dep.target){
 					//均为订阅者
 					dep.addSub(Dep.target)

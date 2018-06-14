@@ -1,7 +1,6 @@
 let myvue = require("../dist/bundle.js");
 
-
-window.vue = new myvue({
+window.op = new myvue({
 	el:'#root',
 	data:{
 		sh:90,
