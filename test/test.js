@@ -1,5 +1,12 @@
 let myvue = require("../dist/bundle.js");
 
+
+//注册全局的API
+myvue.directive('html',{
+	update(value){
+		this.node.innerHTML = value;
+	}
+})
 window.op = new myvue({
 	el:'#root',
 	data:{

@@ -6,6 +6,7 @@ import compile from './compile/compiler.js'
 import directives from './directives/index.js'
 
 import dataAPI from './instance/api/data'
+import globalAPI from './globalApi.js'
 export default class vue{
 	constructor(option){
 		// console.log('here is vue sample')
@@ -78,7 +79,12 @@ export default class vue{
 	}
 }
 dataAPI(vue);
-
+globalAPI(vue);
+//创建实例的时候，可以直接访问options
+vue.options = {
+    directives,
+    components:{},
+};
 window.vue = vue;
 function registerCallbacks(scope,action,hash){
 	if(!hash){
