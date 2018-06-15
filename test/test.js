@@ -28,10 +28,13 @@ window.op = new myvue({
 	computed:{
 		cpt:{
 			get(){
-				return 8
+				// return 8
+				return this.sh
+				// return 89898
 			},
 			set(val){
-
+				debugger
+				alert('--')
 			}
 		}
 	},

@@ -38,6 +38,8 @@ export default class vue{
 		this._proxy(options)
 		this._proxyMethods(options.methods)
 
+		this._proxyComputed(options)
+
 		//添加watch功能
 		this.initWatch()
 
@@ -46,6 +48,29 @@ export default class vue{
 
 		//编译html
 		new compile(options,this)
+ 	}
+
+ 	//
+ 	_proxyComputed(option){
+ 		const that = this;
+ 		const computes = option.computed
+ 		for(let c in option.computed){
+ 			console.log(typeof c)
+ 			console.log(computes[c])//get set
+ 			Object.defineProperty(that,c,{
+ 				enumerable:true,
+ 				configurable:false,
+ 				get(){
+ 					return computes[c].get.call(that)
+ 				},
+ 				set(val){
+ 					if(computes[c].set){
+ 						computes[c].set.call(that,val)
+ 					}
+ 				}
+ 			})
+
+ 		}
  	}
  	//添加代理方法 this.show()
  	_proxyMethods(methods){

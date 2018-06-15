@@ -16,6 +16,7 @@ export default class Watcher{
 	}
 
 	update(){
+		debugger
 		let newValue = this.get()
 		this.value = newValue
 		batcher.pushWatcher(this);
