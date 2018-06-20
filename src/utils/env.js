@@ -22,6 +22,7 @@ function nextTickHandler() {
     for (let i = 0; i < callbacks.length; i++) {
         cb = callbacks[i];
         cb();
+        console.log(cb)
     }
     callbacks = [];
     pending = false;

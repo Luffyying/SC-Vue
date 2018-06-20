@@ -6,6 +6,7 @@ import compile from './compile/compiler.js'
 import directives from './directives/index.js'
 
 import dataAPI from './instance/api/data'
+import eventAPI from './instance/api/event'
 import globalAPI from './globalApi.js'
 export default class vue{
 	constructor(option){
@@ -45,12 +46,21 @@ export default class vue{
 
 		//注意加载顺序 深坑啊，observer(this.$data)的顺序要优先于代理属性的设置
 		
-
+		//生命周期
+		this.initLifeCycle(options)
 		//编译html
 		new compile(options,this)
- 	}
 
- 	//
+ 	}
+ 	//生命周期
+ 	initLifeCycle(option){
+ 		// debugger
+ 		//分别在不同的时期调用不同的钩子函数
+ 		//beforeCreate() 在observe data之前
+ 		//created()  在initEvents initData之后
+ 		// 
+ 		console.log(option.created())
+ 	}
  	_proxyComputed(option){
  		const that = this;
  		const computes = option.computed
@@ -105,6 +115,7 @@ export default class vue{
 }
 dataAPI(vue);
 globalAPI(vue);
+eventAPI(vue)
 //创建实例的时候，可以直接访问options
 vue.options = {
     directives,

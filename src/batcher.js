@@ -22,6 +22,10 @@ class Batcher{
 	        if (!this.waiting) {
 	            this.waiting = true;
 	            nextTick(this.flush,this);
+	            /*
+					当我们修改了data中的一个值的时候，并不会立即反应到该el中，
+
+	            */
 	        }
 	    }
 	}

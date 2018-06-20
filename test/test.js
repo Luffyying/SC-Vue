@@ -28,13 +28,9 @@ window.op = new myvue({
 	computed:{
 		cpt:{
 			get(){
-				// return 8
 				return this.sh
-				// return 89898
 			},
 			set(val){
-				debugger
-				alert('--')
 			}
 		}
 	},
@@ -51,4 +47,22 @@ window.op = new myvue({
 			alert('this is a method')
 		}
 	},
+	created(){
+		//alert('i am created')
+		window.document.title = "素材";
+	},
+	mounted(){
+		//alert('i am mounted')
+	}
+	
 })
+
+//修改data数据，不会立刻响应到el上，执行dom更新后的回调
+op.age = 100
+// alert(document.querySelector('.test').textContent)
+op.$nextTick(function(){
+	alert('这是nextTick的回调')
+	alert(document.querySelector('.test').textContent)
+})
+
+// op.age = 200

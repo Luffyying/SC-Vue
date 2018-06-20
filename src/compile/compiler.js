@@ -38,7 +38,6 @@ export default class Compiler{
 		//元素节点
 		console.log(node)
 		console.log(vm)
-
 		let attrs = [].slice.call(node.attributes)
 		//获得属性节点
 		if(attrs.length){
@@ -76,15 +75,9 @@ function getDirective(node,option){
 			def:option.directives[parse[0]]
 		}
 		console.log(token)
-
 	}
 	return token
-	
-
 }
-// function compileTextNode(node,vm){
-// 	//文本节点
-// }
 function initElement(option){
 	return option.el && typeof option.el ==='string'?document.querySelector(option.el):document.body
 }

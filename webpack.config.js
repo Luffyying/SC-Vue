@@ -26,3 +26,9 @@ module.exports = {
     progress: true,
   },
 }
+/*
+  服务器端，文件一般都在本地，是同步加载文件的，但是浏览器端要求异步加载，所以node中的commonJs就不再适用（
+  每个node模块都有一个package.json文件）
+  于是异步加载 AMD (define方法定义模块,经典的是requireJS), CMD应运而生  怎么就是异步加载了呢？
+  UMD：兼容commonJS and AMD
+*/
